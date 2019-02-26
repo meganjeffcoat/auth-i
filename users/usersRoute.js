@@ -5,6 +5,10 @@ const router = express.Router();
 const bcrypt = require("bcryptjs");
 const knexConfig = require("../knexfile.js");
 const session = require('express-session');
+const KnexSessionStore = require('connect-session-knex')(session);
+
+const db = require('../data/dbConfig.js');
+const Users = require('../users/users-module.js');
 
 const sessionConfig = {
     name: 'dog',
@@ -16,10 +20,16 @@ const sessionConfig = {
     httpOnly: true,
     resave: false,
     saveUninitialized: false,
+
+    store: new KnexSessionStore({
+        knex: db,
+        tablename: 'sessions',
+        sidfieldname: 'sid',
+        createtable: true, 
+        clearInterval: 1000 * 60 * 60,
+    })
 };
 
-const db = require('../data/dbConfig.js');
-const Users = require('../users/users-module.js');
 
 
 router.use(session(sessionConfig));
@@ -61,25 +71,12 @@ router.post('/login', (req, res) => {
 });
 
 function restricted(req, res, next) {
-    const { username, password } = req.headers;
-    if (username && password) {
-    
-    Users.findBy({ username })
-        .first()
-        .then(user => {
-            if (user && bcrypt.compareSync(password, user.password)) {
-                next();
-            } else {
-                res.status(401).json({ message: 'Invalid Credentials' });
-            }
-        })
-        .catch(error => {
-            res.status(500).json({ message: 'You shall not pass' });
-        })   
+    if(req.session && req.session.user) {
+      next();
     } else {
-        res.status(400).json({ message: 'Please login or register to continue' })
-    }
-}
+          res.status(401).json({ message: 'You shall not pass' });
+        }
+  }
 
 router.get('/users',restricted, (req, res) => {
     Users.find()
