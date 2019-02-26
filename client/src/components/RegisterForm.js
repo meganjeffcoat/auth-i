@@ -23,7 +23,6 @@ const Register = styled.form`
         padding: 10px 5px;
         margin: 5px 0;
         border: 1px solid red;
-        background: rgb(153, 0, 0, 0.7);
         border-radius: 5px;
     }
     button{

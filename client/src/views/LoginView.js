@@ -31,7 +31,7 @@ class LoginView extends React.Component{
                         password: ''
                     }
                 })
-                this.props.history.push('/')
+                this.props.history.push('/users')
             })
             .catch(error => {
                 console.log('error happened')

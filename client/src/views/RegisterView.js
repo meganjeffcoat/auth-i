@@ -31,7 +31,7 @@ class RegisterView extends React.Component{
                         password: ''
                     }
                 })
-                this.props.history.push('/')
+                this.props.history.push('/login')
             })
             .catch(error => {
                 console.log(error)
