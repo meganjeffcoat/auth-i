@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 
 import RegisterView from './views/RegisterView';
+import LoginView from './views/LoginView';
 
 
 
@@ -12,8 +13,8 @@ class App extends Component {
     return (
       <div className="App">
         <Route path='/register' component={RegisterView}/> 
-        {/* <Route path='/login' component={}/> 
-        <Route path='/users' exact component={}/>  */}
+        <Route path='/login' component={LoginView}/> 
+        {/* <Route path='/users' exact component={}/>  */}
       </div>
     );
   }

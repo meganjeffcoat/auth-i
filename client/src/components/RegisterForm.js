@@ -6,10 +6,13 @@ const FormContainer = styled.div`
     margin: 0 auto;
     padding: 15px;
     border: 1px solid black;
+    background: rgb(26, 26, 26, 0.7);
+    opacity: 0.8;
     border-radius: 5px;
     h1{
         text-align: center;
         margin: unset;
+        color: white;
     }
 `;
 
@@ -20,6 +23,7 @@ const Register = styled.form`
         padding: 10px 5px;
         margin: 5px 0;
         border: 1px solid red;
+        background: rgb(153, 0, 0, 0.7);
         border-radius: 5px;
     }
     button{
@@ -28,6 +32,7 @@ const Register = styled.form`
     h2{
         font-size: 1.6rem;
         margin: unset;
+        color: white;
     }
 `;
 

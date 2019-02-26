@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const FormContainer = styled.div`
@@ -6,10 +7,13 @@ const FormContainer = styled.div`
     margin: 0 auto;
     padding: 15px;
     border: 1px solid black;
+    background: rgb(26, 26, 26, 0.7);
+    opacity: 0.8;
     border-radius: 5px;
     h1{
         text-align: center;
         margin: unset;
+        color: white;
     }
 `;
 
@@ -20,6 +24,7 @@ const Login = styled.form`
         padding: 10px 5px;
         margin: 5px 0;
         border: 1px solid red;
+        background: rgb(153, 0, 0, 0.7);
         border-radius: 5px;
     }
     button{
@@ -28,6 +33,7 @@ const Login = styled.form`
     h2{
         font-size: 1.6rem;
         margin: unset;
+        color: white;
     }
 `;
 
@@ -41,6 +47,7 @@ const LoginForm = props => {
                 <h2>Password:</h2>
                 <input type="password" name="password" required/>
                 <button type="submit">Login</button>
+                <Link to='/register' style={{color: 'white'}}>No account? Click here to Register</Link>
             </Login>
         </FormContainer>
     )
