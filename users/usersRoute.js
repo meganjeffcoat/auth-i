@@ -86,4 +86,18 @@ router.get('/users',restricted, (req, res) => {
         .catch(err => res.send(err));
 });
 
+router.get('/logout', (req, res) => {
+    if(req.session) {
+      req.session.destroy(err => {
+        if (err) {
+          res.send('You can leave if you want.....')
+        } else {
+          res.send('bye, thanks for choosing the dark side');
+        }
+      })
+    } else {
+      res.end();
+    }
+  })
+
   module.exports = router;
