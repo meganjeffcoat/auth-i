@@ -22,7 +22,7 @@ class LoginView extends React.Component{
 
     handleLogin = e => {
         e.preventDefault()
-        axios.post('http://localhost:5000/login', this.state.loginInfo)
+        axios.post('http://localhost:5000/login')
             .then(res => {
                 this.setState({
                     loggedIn: true,
